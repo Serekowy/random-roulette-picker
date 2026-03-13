@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21"
+            fx:controller="org.cheesy.randomroulettepicker.controller.MainController"
+            prefHeight="650.0" prefWidth="950.0">
+
+    <left>
+        <VBox spacing="15.0" prefWidth="300.0" style="-fx-background-color: #f8f9fa; -fx-border-color: #dee2e6; -fx-border-width: 0 1 0 0;">
+            <padding>
+                <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
+            </padding>
+
+            <Label text="Zarządzanie Działami">
+                <font>
+                    <Font name="System Bold" size="16.0" />
+                </font>
+            </Label>
+
+            <HBox spacing="10.0">
+                <ComboBox fx:id="departmentComboBox" promptText="Wybierz dział..." HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                <Button fx:id="addDepartmentBtn" text="+" onAction="#handleAddDepartment" prefWidth="35.0" style="-fx-font-weight: bold;"/>
+                <Button fx:id="removeDepartmentBtn" text="-" onAction="#handleRemoveDepartment" prefWidth="35.0" style="-fx-font-weight: bold; -fx-text-fill: red;"/>
+            </HBox>
+
+            <Separator />
+
+            <Label text="Pracownicy w dziale">
+                <font>
+                    <Font name="System Bold" size="14.0" />
+                </font>
+            </Label>
+
+            <HBox spacing="10.0">
+                <TextField fx:id="employeeNameField" promptText="Imię i nazwisko" HBox.hgrow="ALWAYS" onAction="#handleAddEmployee"/>
+                <Button fx:id="addEmployeeBtn" text="Dodaj" onAction="#handleAddEmployee"/>
+            </HBox>
+
+            <ListView fx:id="employeeListView" VBox.vgrow="ALWAYS" />
+
+            <Button fx:id="removeEmployeeBtn" text="Usuń wybranego pracownika" onAction="#handleRemoveEmployee" maxWidth="Infinity"/>
+        </VBox>
+    </left>
+
+    <center>
+        <VBox alignment="CENTER" spacing="30.0" style="-fx-background-color: #ffffff;">
+            <padding>
+                <Insets top="30.0" right="40.0" bottom="40.0" left="40.0"/>
+            </padding>
+
+            <Label fx:id="lastWinnerLabel" text="Ostatni zwycięzca: Brak danych" textFill="#7f8c8d">
+                <font>
+                    <Font name="System Italic" size="14.0" />
+                </font>
+            </Label>
+
+            <StackPane fx:id="rouletteContainer" prefHeight="400.0" prefWidth="400.0">
+                <Label text="(Tu wygeneruje się koło ruletki)" textFill="#bdc3c7"/>
+            </StackPane>
+
+            <Button fx:id="spinButton" text="LOSUJ!" onAction="#handleSpin"
+                    prefHeight="60.0" prefWidth="250.0"
+                    style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 20px; -fx-background-radius: 30; -fx-cursor: hand;"/>
+
+            <Label fx:id="winnerLabel" text="Zakręć, aby wylosować!" textFill="#2c3e50">
+                <font>
+                    <Font name="System Bold" size="28.0" />
+                </font>
+            </Label>
+        </VBox>
+    </center>
+</BorderPane>
